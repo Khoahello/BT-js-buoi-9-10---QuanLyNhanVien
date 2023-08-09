@@ -13,6 +13,16 @@ if (jsonData != null) {
 
 function themNV() {
     var nv = layThongTinTuForm()
+
+    // start validate
+    var isValid = kiemTraRong("tbTKNV", nv.ten) &
+    kiemTraRong("tbTen", nv.ten) &
+    kiemTraDoDai(4,6,"tbTKNV", nv.taikhoan) &
+    kiemTraEmail("tbEmail", nv.email) //&
+    // kiemTraMatKhau("tbMatKhau", nv.matkhau)
+    // end validate
+    if (!isValid) return
+
     dsnv.push(nv)
 
     var jsonData = JSON.stringify(dsnv)
