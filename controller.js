@@ -11,8 +11,8 @@ function renderDSNV(dsnv) {
                                 <td>${data.tinhTongLuong()}</td>
                                 <td>${data.xepLoai()}</td>
                                 <td>
-                                    <button class = "btn btn-primary">Edit</button>
-                                    <button class ="btn btn-danger" onclick = "xoaNv('${data.taikhoan}')">Delete</button>
+                                    <button class = "btn btn-primary" onclick = "suaNv('${data.taikhoan}')">Edit</button>
+                                    <button class = "btn btn-danger" onclick = "xoaNv('${data.taikhoan}')">Delete</button>
                                 </td>
                         </tr>`
         contentHTML = contentHTML + contentTr
@@ -21,10 +21,37 @@ function renderDSNV(dsnv) {
 }
 
 function timViTri(id, dsnv) {
-    var viTri
-    for (var i = 0; i < dsnv.length; i++) {
-        if (dsnv[i].taikhoan == id) {
-            return i
-        }
-    }
+    // var viTri
+    // for (var i = 0; i < dsnv.length; i++) {
+    //     if (dsnv[i].taikhoan == id) {
+    //         return i
+    //     }
+    // }
+    return viTri = dsnv.findIndex(function(nv){
+        return nv.taikhoan == id
+    })
+}
+
+function showThongTinLenForm(nv) {
+        document.getElementById("tknv").value = nv.taikhoan
+        document.getElementById("name").value = nv.ten
+        document.getElementById("email").value = nv.email
+        document.getElementById("password").value = nv.matkhau
+        document.getElementById("datepicker").value = nv.ngaylam
+        document.getElementById("luongCB").value = nv.luongcoban
+        document.getElementById("chucvu").value = nv.chucvu
+        document.getElementById("gioLam").value = nv.giolam
+}
+
+function layThongTinTuForm() {
+    var _taikhoan = document.getElementById("tknv").value
+    var _ten = document.getElementById("name").value
+    var _email = document.getElementById("email").value
+    var _matkhau = document.getElementById("password").value
+    var _ngaylam = document.getElementById("datepicker").value
+    var _luongcoban = document.getElementById("luongCB").value * 1
+    var _chucvu = document.getElementById("chucvu").value
+    var _giolam = document.getElementById("gioLam").value * 1
+    var nv = new NhanVien(_taikhoan, _ten, _email, _matkhau, _ngaylam, _luongcoban, _chucvu, _giolam,)
+    return nv
 }
