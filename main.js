@@ -53,3 +53,19 @@ function capNhatNv() {
     dsnv[index] = nv
     renderDSNV(dsnv)
 }
+
+function timNv() {
+    var dsSearch = []
+    var thongTinSearch = layThongTinTuSearch().trim()
+    if (thongTinSearch != "") {
+        for (var i = 0; i < dsnv.length; i++) {
+            var dataSearch = dsnv[i]
+            if (dsnv[i].xepLoai() == thongTinSearch) {
+                dsSearch.push(dataSearch)
+            }
+        }
+        renderDSNV(dsSearch)
+    } else {
+        renderDSNV(dsnv)
+    }
+}

@@ -2,6 +2,7 @@ function renderDSNV(dsnv) {
     var contentHTML = ""
     for (var i = 0; i < dsnv.length; i++) {
         var data = dsnv[i]
+        console.log("🚀 ~ file: controller.js:5 ~ renderDSNV ~ data:", data)
         var contentTr = `<tr>
                                 <td>${data.taikhoan}</td>
                                 <td>${data.ten}</td>
@@ -54,4 +55,8 @@ function layThongTinTuForm() {
     var _giolam = document.getElementById("gioLam").value * 1
     var nv = new NhanVien(_taikhoan, _ten, _email, _matkhau, _ngaylam, _luongcoban, _chucvu, _giolam,)
     return nv
+}
+
+function layThongTinTuSearch() {
+    return searchNV = document.getElementById("searchName").value
 }
