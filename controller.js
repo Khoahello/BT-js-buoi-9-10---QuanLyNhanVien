@@ -2,7 +2,6 @@ function renderDSNV(dsnv) {
     var contentHTML = ""
     for (var i = 0; i < dsnv.length; i++) {
         var data = dsnv[i]
-        console.log("🚀 ~ file: controller.js:5 ~ renderDSNV ~ data:", data)
         var contentTr = `<tr>
                                 <td>${data.taikhoan}</td>
                                 <td>${data.ten}</td>
@@ -12,7 +11,8 @@ function renderDSNV(dsnv) {
                                 <td>${data.tinhTongLuong()}</td>
                                 <td>${data.xepLoai()}</td>
                                 <td>
-                                    <button class = "btn btn-primary" onclick = "suaNv('${data.taikhoan}')">Edit</button>
+                                    <button class = "btn btn-primary"                     data-toggle="modal"
+                                    data-target="#myModal" onclick = "suaNv('${data.taikhoan}')">Edit</button>
                                     <button class = "btn btn-danger" onclick = "xoaNv('${data.taikhoan}')">Delete</button>
                                 </td>
                         </tr>`
@@ -22,12 +22,6 @@ function renderDSNV(dsnv) {
 }
 
 function timViTri(id, dsnv) {
-    // var viTri
-    // for (var i = 0; i < dsnv.length; i++) {
-    //     if (dsnv[i].taikhoan == id) {
-    //         return i
-    //     }
-    // }
     return viTri = dsnv.findIndex(function(nv){
         return nv.taikhoan == id
     })

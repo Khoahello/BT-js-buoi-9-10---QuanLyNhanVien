@@ -20,3 +20,11 @@
 .myCardHeader, .myCardFooter{
 	background-color: transparent;       
 }
+
+.card-body .input-group-prepend {
+  transition: 0.3s;
+}
+
+.card-body .input-group-prepend:hover {
+  cursor: pointer;
+}
