@@ -8,10 +8,9 @@ if (jsonData != null) {
     renderDSNV(dsnv)
 }
 
+document.getElementById("btnThemNV").hidden = true
 
-
-
-function themNV() {
+function themNguoiDung() {
     var nv = layThongTinTuForm()
 
     // start validate
@@ -47,11 +46,25 @@ function suaNv(id) {
     document.getElementById("tknv").disabled = true
 }
 
+function themNhanVien() {
+    document.getElementById("tknv").value = ""
+    document.getElementById("name").value = ""
+    document.getElementById("email").value = ""
+    document.getElementById("password").value = ""
+    document.getElementById("datepicker").value = ""
+    document.getElementById("luongCB").value = ""
+    document.getElementById("chucvu").value = "Chọn chức vụ"
+    document.getElementById("gioLam").value = ""
+    document.getElementById("tknv").disabled = false
+    document.getElementById("btnThemNV").hidden = false
+}
+
 function capNhatNv() {
     var nv = layThongTinTuForm()
     var index = timViTri(nv.taikhoan, dsnv)
     dsnv[index] = nv
     renderDSNV(dsnv)
+    document.getElementById("btnThemNV").hidden = true
 }
 
 function timNv() {

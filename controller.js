@@ -11,8 +11,7 @@ function renderDSNV(dsnv) {
                                 <td>${data.tinhTongLuong()}</td>
                                 <td>${data.xepLoai()}</td>
                                 <td>
-                                    <button class = "btn btn-primary"                     data-toggle="modal"
-                                    data-target="#myModal" onclick = "suaNv('${data.taikhoan}')">Edit</button>
+                                    <button class = "btn btn-primary" data-toggle="modal" data-target="#myModal" onclick = "suaNv('${data.taikhoan}')">Edit</button>
                                     <button class = "btn btn-danger" onclick = "xoaNv('${data.taikhoan}')">Delete</button>
                                 </td>
                         </tr>`
