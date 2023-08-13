@@ -14,19 +14,18 @@ function themNguoiDung() {
     var nv = layThongTinTuForm()
 
     // start validate
-    var isValid = kiemTraRong("tbTKNV", nv.ten) &
-    kiemTraRong("tbTen", nv.ten) &
-    kiemTraDoDai(4,6,"tbTKNV", nv.taikhoan) &
-    kiemTraEmail("tbEmail", nv.email) //&
-    // kiemTraMatKhau("tbMatKhau", nv.matkhau)
+    var isValid = 
+    (kiemTraLich("tbNgay", nv.ngaylam) && kiemTraRong("tbNgay", nv.ngaylam)) & (kiemTraChuOnly("tbTen", nv.ten) && kiemTraRong("tbTen", nv.ten)) &
+    kiemTraRong("tbTKNV", nv.taikhoan) & kiemTraRong("tbEmail", nv.email) & kiemTraRong("tbMatKhau", nv.matkhau) &
+    kiemTraKySo(4, 6, "tbTKNV", nv.taikhoan) & kiemTraEmail("tbEmail", nv.email) & kiemTraMatKhau("tbMatKhau", nv.matkhau) & kiemTraChucVu("tbChucVu", nv.chucvu) & kiemTraNumber(1000000, 20000000, "tbLuongCB", nv.luongcoban) & kiemTraNumber(80, 200, "tbGiolam", nv.giolam)
     // end validate
+
     if (!isValid) return
 
     dsnv.push(nv)
 
     var jsonData = JSON.stringify(dsnv)
     localStorage.setItem("DSNV", jsonData)
-
     renderDSNV(dsnv)
 }
 
@@ -35,8 +34,8 @@ function xoaNv(id) {
     dsnv.splice(index, 1)
     console.log("🚀 ~ file: main.js:62 ~ xoaNv ~ dsnv:", dsnv)
     renderDSNV(dsnv)
-    // var jsonData = JSON.stringify(dsnv)
-    // localStorage.setItem("DSNV", jsonData)
+    var jsonData = JSON.stringify(dsnv)
+    localStorage.setItem("DSNV", jsonData)
 }
 
 function suaNv(id) {
@@ -61,9 +60,21 @@ function themNhanVien() {
 
 function capNhatNv() {
     var nv = layThongTinTuForm()
+
+    // start validate
+    var isValid2 = 
+    (kiemTraLich("tbNgay", nv.ngaylam) && kiemTraRong("tbNgay", nv.ngaylam)) & (kiemTraChuOnly("tbTen", nv.ten) && kiemTraRong("tbTen", nv.ten)) &
+    kiemTraRong("tbEmail", nv.email) & kiemTraRong("tbMatKhau", nv.matkhau) &
+    kiemTraEmail("tbEmail", nv.email) & kiemTraMatKhau("tbMatKhau", nv.matkhau) & kiemTraChucVu("tbChucVu", nv.chucvu) & kiemTraNumber(1000000, 20000000, "tbLuongCB", nv.luongcoban) & kiemTraNumber(80, 200, "tbGiolam", nv.giolam)
+    // end validate
+
+    if (!isValid2) return
+
     var index = timViTri(nv.taikhoan, dsnv)
     dsnv[index] = nv
     renderDSNV(dsnv)
+    var jsonData = JSON.stringify(dsnv)
+    localStorage.setItem("DSNV", jsonData)
     document.getElementById("btnThemNV").hidden = true
 }
 
@@ -82,3 +93,6 @@ function timNv() {
         renderDSNV(dsnv)
     }
 }
+
+
+console.log(typeof 123);
