@@ -9,15 +9,15 @@ if (jsonData != null) {
 }
 
 document.getElementById("btnThemNV").hidden = true
+document.getElementById("btnCapNhat").hidden = true
 
 function themNguoiDung() {
     var nv = layThongTinTuForm()
 
     // start validate
     var isValid = 
-    (kiemTraLich("tbNgay", nv.ngaylam) && kiemTraRong("tbNgay", nv.ngaylam)) & (kiemTraChuOnly("tbTen", nv.ten) && kiemTraRong("tbTen", nv.ten)) &
-    kiemTraRong("tbTKNV", nv.taikhoan) & kiemTraRong("tbEmail", nv.email) & kiemTraRong("tbMatKhau", nv.matkhau) &
-    kiemTraKySo(4, 6, "tbTKNV", nv.taikhoan) & kiemTraEmail("tbEmail", nv.email) & kiemTraMatKhau("tbMatKhau", nv.matkhau) & kiemTraChucVu("tbChucVu", nv.chucvu) & kiemTraNumber(1000000, 20000000, "tbLuongCB", nv.luongcoban) & kiemTraNumber(80, 200, "tbGiolam", nv.giolam)
+    (kiemTraRong("tbTKNV", nv.taikhoan) && kiemTraKySo(4, 6, "tbTKNV", nv.taikhoan)) & (kiemTraLich("tbNgay", nv.ngaylam) && kiemTraRong("tbNgay", nv.ngaylam)) & (kiemTraChuOnly("tbTen", nv.ten) && kiemTraRong("tbTen", nv.ten)) & (kiemTraRong("tbEmail", nv.email) && kiemTraEmail("tbEmail", nv.email)) & (kiemTraRong("tbMatKhau", nv.matkhau) && kiemTraMatKhau("tbMatKhau", nv.matkhau)) &
+    kiemTraChucVu("tbChucVu", nv.chucvu) & kiemTraNumber(1000000, 20000000, "tbLuongCB", nv.luongcoban) & kiemTraNumber(80, 200, "tbGiolam", nv.giolam)
     // end validate
 
     if (!isValid) return
@@ -32,7 +32,6 @@ function themNguoiDung() {
 function xoaNv(id) {
     var index = timViTri(id, dsnv)
     dsnv.splice(index, 1)
-    console.log("🚀 ~ file: main.js:62 ~ xoaNv ~ dsnv:", dsnv)
     renderDSNV(dsnv)
     var jsonData = JSON.stringify(dsnv)
     localStorage.setItem("DSNV", jsonData)
@@ -43,6 +42,8 @@ function suaNv(id) {
     var nv = dsnv[index]
     showThongTinLenForm(nv)
     document.getElementById("tknv").disabled = true
+    document.getElementById("btnThemNV").hidden = true
+    document.getElementById("btnCapNhat").hidden = false
 }
 
 function themNhanVien() {
@@ -56,26 +57,25 @@ function themNhanVien() {
     document.getElementById("gioLam").value = ""
     document.getElementById("tknv").disabled = false
     document.getElementById("btnThemNV").hidden = false
+    document.getElementById("btnCapNhat").hidden = true
 }
 
 function capNhatNv() {
     var nv = layThongTinTuForm()
 
     // start validate
-    var isValid2 = 
-    (kiemTraLich("tbNgay", nv.ngaylam) && kiemTraRong("tbNgay", nv.ngaylam)) & (kiemTraChuOnly("tbTen", nv.ten) && kiemTraRong("tbTen", nv.ten)) &
-    kiemTraRong("tbEmail", nv.email) & kiemTraRong("tbMatKhau", nv.matkhau) &
-    kiemTraEmail("tbEmail", nv.email) & kiemTraMatKhau("tbMatKhau", nv.matkhau) & kiemTraChucVu("tbChucVu", nv.chucvu) & kiemTraNumber(1000000, 20000000, "tbLuongCB", nv.luongcoban) & kiemTraNumber(80, 200, "tbGiolam", nv.giolam)
+    var isValid = 
+    (kiemTraLich("tbNgay", nv.ngaylam) && kiemTraRong("tbNgay", nv.ngaylam)) & (kiemTraChuOnly("tbTen", nv.ten) && kiemTraRong("tbTen", nv.ten)) & (kiemTraRong("tbEmail", nv.email) && kiemTraEmail("tbEmail", nv.email)) & (kiemTraRong("tbMatKhau", nv.matkhau) && kiemTraMatKhau("tbMatKhau", nv.matkhau)) &
+    kiemTraChucVu("tbChucVu", nv.chucvu) & kiemTraNumber(1000000, 20000000, "tbLuongCB", nv.luongcoban) & kiemTraNumber(80, 200, "tbGiolam", nv.giolam)
     // end validate
 
-    if (!isValid2) return
+    if (!isValid) return
 
     var index = timViTri(nv.taikhoan, dsnv)
     dsnv[index] = nv
     renderDSNV(dsnv)
     var jsonData = JSON.stringify(dsnv)
     localStorage.setItem("DSNV", jsonData)
-    document.getElementById("btnThemNV").hidden = true
 }
 
 function timNv() {
@@ -93,6 +93,3 @@ function timNv() {
         renderDSNV(dsnv)
     }
 }
-
-
-console.log(typeof 123);
