@@ -27,6 +27,7 @@ function themNguoiDung() {
     var jsonData = JSON.stringify(dsnv)
     localStorage.setItem("DSNV", jsonData)
     renderDSNV(dsnv)
+    $("#myModal").modal("hide")
 }
 
 function xoaNv(id) {
@@ -38,6 +39,7 @@ function xoaNv(id) {
 }
 
 function suaNv(id) {
+    document.getElementById("tbGiolam").value = "" 
     var index = timViTri(id, dsnv)
     var nv = dsnv[index]
     showThongTinLenForm(nv)
@@ -76,6 +78,7 @@ function capNhatNv() {
     renderDSNV(dsnv)
     var jsonData = JSON.stringify(dsnv)
     localStorage.setItem("DSNV", jsonData)
+    $("#myModal").modal("hide")
 }
 
 function timNv() {
@@ -92,4 +95,15 @@ function timNv() {
     } else {
         renderDSNV(dsnv)
     }
+}
+
+function anThongBao() {
+    document.getElementById("tbTKNV").innerText = ""
+    document.getElementById("tbTen").innerText = ""
+    document.getElementById("tbEmail").innerText = ""
+    document.getElementById("tbMatKhau").innerText = ""
+    document.getElementById("tbNgay").innerText = ""
+    document.getElementById("tbLuongCB").innerText = ""
+    document.getElementById("tbChucVu").innerText = ""
+    document.getElementById("tbGiolam").innerText = "" 
 }

@@ -40,7 +40,7 @@ function kiemTraKySo(minSo, maxSo, idErr, value) {
         }
     }
     if (demKySo < minSo || demKySo > maxSo) {
-        document.getElementById(idErr).innerText = `Nội dung này tối đa từ ${minSo} đến ${maxSo} ký số`
+        document.getElementById(idErr).innerText = `Nội dung này phải tối đa từ ${minSo} đến ${maxSo} ký tự số`
         return false
     } else {
         document.getElementById(idErr).innerText = ""
