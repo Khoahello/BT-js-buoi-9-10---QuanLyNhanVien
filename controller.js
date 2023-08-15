@@ -53,14 +53,3 @@ function layThongTinTuForm() {
 function layThongTinTuSearch() {
     return searchNV = document.getElementById("searchName").value
 }
-
-function closeModal() {
-    document.getElementById("tbTKNV").innerText = ""
-    document.getElementById("tbTen").innerText = ""
-    document.getElementById("tbEmail").innerText = ""
-    document.getElementById("tbMatKhau").innerText = ""
-    document.getElementById("tbNgay").innerText = ""
-    document.getElementById("tbLuongCB").innerText = ""
-    document.getElementById("tbChucVu").innerText = ""
-    document.getElementById("tbGiolam").innerText = "" 
-}
